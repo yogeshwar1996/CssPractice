@@ -1,0 +1,31 @@
+#assignment-instructions {
+    font-family: sans-serif;
+    color: green
+}
+
+
+.green-color {
+    color: green;
+}
+
+code {
+    font-family: monospace;
+    color: red;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+/* Note following can be achieved by doing l1 + l1 { ...  }  i.e all li that are adjacent sibling of another li this will not be true for the first li*/
+ol li:not(:first-child)  { 
+    background-color: black;
+    color: white;
+}
+
+
+
+ol li {
+    background-color: black;
+    color: white;
+}
