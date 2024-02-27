@@ -1,7 +1,8 @@
+######################################
 3 ways of adding styles to a HTML file
 ######################################
 1. In the <head> section using <style> tag
-
+--------------------------------------------
 <head>
     <style>
         p //the css selector 
@@ -12,18 +13,16 @@
 </head>
 
 2. inline styles
-
+------------------
 <p style="background: red"></p>
 
 3. Using <link> to a css file
-
+------------------------------
 <head>
     <link rel="stylesheet" href="main.css">  
 </head>
 
-main.css
---------
-
+(main.css)
  p {
     background: red;
  }
@@ -242,6 +241,142 @@ Examples
 
 
 Note: 
->>> Css combinator for all list items in an un-ordered list except the first one
+Css combinator for all list items in an un-ordered list except the first one -
+
 ol li:not(:first-child)  { 
+
 }
+
+#######################
+Understanding box model
+#######################
+The outline of the element is called border, 
+between border and next element we have margin
+between border and content of element we have padding
+
+
+Writting in shorthand
+-------------------
+Border properties like border-style border-color and border-width can be written in shorthand as follows
+border: 2px solid red; 
+border: solid 2px red; 
+border: red 2px solid; 
+
+The order does not matter
+border-width: 2px 4px; // top and bottom is 2px while right and left is 4px
+border-width: 2px 4px 6px 8px; // top right bottom left borders
+
+
+
+
+General notes around css used in MM-FRONTEND
+############################################
+
+> DSM classes for 100% width and height
+-----------------------------------
+width-100
+height-100
+
+> display property
+------------------
+block  - means one on top of the other
+inline - all in one line
+inline-block - like a block but all in one line
+
+> styling router-link
+---------------------
+To remove underline, use text-decoration: auto
+
+To style use router-link-active class
+.router-link-active {
+    color: var(--mm-color--p700);
+}
+
+> Defining variable in scss
+----------------------------
+$mm-section-width: 210px;
+
+usage:
+max-width: $mm-section-width;
+
+> Defining variable in css
+---------------------------
+
+The variable name should start with `--` and to make it accessible throughout project it should be defined in :root
+:root {
+  --primary-color: #ff0000;
+}
+usage:
+color: var(--primary-color);
+
+> To prevent text from overflow the container
+---------------------------------------------
+overflow-wrap: break-word;
+
+
+> Using line-height with display flex
+-------------------------------------
+https://www.perplexity.ai/search/line-height-in-.x0OuPrLQHGHkj_QEb2jYQ?s=c
+
+line height is applied to the flex items within the flex container. 
+The line-height property sets the height of a line box,
+commonly used to set the distance between lines of text
+
+> Using <p> vs <span>
+----------------------
+use p when you have multiple lines or you want to give vertical spacing between content
+user span for inline purpose and unlike <p> it does not add vertical space by default 
+
+> <img> object-fit
+------------------
+The object-fit property in CSS is used to specify how an img or video element should be resized to fit its container
+
+> display flex and position absolute
+--------------------------------------
+when parent has {display: flex} and child has {position: absolute}
+it allows the child to be positioned within the parent element using the top, right, bottom, and left properties
+
+
+> Scss @extend
+---------------
+If you want to reuse some styles and dont want to repeat them
+then define them once in a class and then use 
+
+.newClass {
+  @extend <className>
+}
+
+Example
+
+// Define a base style
+.base-style {
+  color: blue;
+  font-size: 16px;
+}
+
+// Extend the base style to another selector
+.extended-style {
+  @extend .base-style;
+  font-weight: bold;
+}
+
+// Apply styles to elements using the extended style
+.my-element {
+  @extend .extended-style;
+  border: 1px solid black;
+}
+
+
+> justify-content and align-items
+---------------------------------
+The justify-content and align-items properties are used in CSS flexbox to align items within a flex container
+
+# justify-content
+This property is used to align items along the main axis of the flex container.
+For a flex container with a horizontal main axis, it will align the items horizontally. 
+The values for justify-content include flex-start, flex-end, center, space-between, and space-around.
+
+# align-items 
+Unlike justify-content, the align-items property is used to align items on the cross axis of the flex container.
+This means it controls the vertical alignment of items for a flex container with a horizontal main axis. 
+The values for align-items include flex-start, flex-end, center, baseline, and stretch.
