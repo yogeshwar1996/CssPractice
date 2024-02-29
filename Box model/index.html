@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Box Model Example</title>
+    <style>
+        .box1 {
+            margin: 10px;
+            height: 200px;
+            border: 5px solid black;
+            background-color: lightgray;
+            padding: 20px;
+        }
+        .box2 {
+            box-sizing: border-box;
+            margin: 10px;
+            height: 200px;
+            border: 5px solid black;
+            background-color: lightgray;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        With box-sixing as content-box
+        {
+            margin: 10px;
+            height: 200px;
+            border: 5px solid black;
+            background-color: lightgray;
+            padding: 20px;
+        }
+    </div>
+    <div class="box2">
+        With box-sixing as border-box
+        {
+            box-sizing: border-box;
+            margin: 10px;
+            height: 200px;
+            border: 5px solid black;
+            background-color: lightgray;
+            padding: 20px;
+        }
+    </div>
+</body>
+</html>

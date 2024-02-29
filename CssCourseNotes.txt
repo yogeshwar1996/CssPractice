@@ -144,6 +144,18 @@ The text will be colored orange
 Order of precedance
 inline styles > ID selectors > class, pseudo class, attribute selectors > tag > * 
 
+
+Grouping selectors
+------------------
+
+In CSS, you can group selectors together to apply the same styles to multiple elements. This allows you to write more concise and maintainable styles. To group selectors, you separate them with commas. Here's the basic syntax:
+
+css
+Copy code
+selector1, selector2, selector3 {
+  /* Shared styles for selector1, selector2, and selector3 */
+}
+
 ######################
 
 Cascading and Specificity
@@ -254,6 +266,26 @@ The outline of the element is called border,
 between border and next element we have margin
 between border and content of element we have padding
 
++-------------------------------------+
+|              Margin                 |
+|                                     |
+|  +-------------------------------+  |
+|  |            Border             |  |
+|  |                               |  |
+|  |  +-------------------------+  |  |
+|  |  |         Padding         |  |  |
+|  |  |                         |  |  |
+|  |  |  +-------------------+  |  |  |
+|  |  |  |     Content       |  |  |  |
+|  |  |  |                   |  |  |  |
+|  |  |  +-------------------+  |  |  |
+|  |  |                         |  |  |
+|  |  +-------------------------+  |  |
+|  |                               |  |
+|  +-------------------------------+  |
+|                                     |
++-------------------------------------+
+
 
 Writting in shorthand
 -------------------
@@ -266,11 +298,231 @@ The order does not matter
 border-width: 2px 4px; // top and bottom is 2px while right and left is 4px
 border-width: 2px 4px 6px 8px; // top right bottom left borders
 
+Margin collapsing
+------------------
+It is relevant for block elements
+Consider a list with some items and you have a css rule adding margin to each item in list
+li { margin:20px; }
+<ul>
+    <li>One</li>
+    <li>Two</li>
+    <li>Three</li>
+</ul>
+
+When you will inspect the margins of each list item they will overlap, this is called margin collapsing
+Between two elements one which has higher margin is the final margin between them
+
+<ul>
+    <li style="margin: 10px">One</li>
+    <li style="margin: 20px">Two</li>
+    <li style="margin-top: 8px">Three</li> //Here the 8px is collapsed into the 20px margin of above li
+</ul>
 
 
+Height and Width
+----------------
+When we set height and width for any element's content purely excluding the padding and border and margin
+we set it as follows
+{box-sizing: content-box, width: 100px, height: 100px}
+Note: The default value of the box-sizing property in CSS is "content-box"
 
+If you want to include the border and padding within the specified height and width then define it as follows
+{box-sizing: border-box, width: 100px, height: 100px}
+Note it still does not include the margin. Including margin in height and width is not allowed in css
+
+#################################
+Block and inline elements in HTML
+#################################
+
+In HTML, elements are categorized as either "block-level" or "inline" elements. 
+
+Block-level elements
+--------------------
+These elements typically start on a new line and take up the full width of their container, stacking on top of each other. 
+They are used to structure the content and create the main building blocks of a webpage. 
+Here are some common block-level elements in HTML:
+
+1. <div> A generic container that is often used to group other elements and apply styles or layout.
+
+<div>
+  <!-- Other block or inline elements go here -->
+</div>
+
+
+2. <p> Represents a paragraph of text.
+
+<p>This is a paragraph.</p>
+
+3. <h1> to <h6> Heading elements, with `<h1>` being the largest and `<h6>` being the smallest.
+
+
+<h1>This is a heading level 1</h1>
+<h2>This is a heading level 2</h2>
+<h6>This is a heading level 6</h6>
+
+4. <ul> Represents an unordered (bulleted) list.
+
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <!-- ... -->
+</ul>
+
+5. <ol>  Represents an ordered (numbered) list.
+
+<ol>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <!-- ... -->
+</ol>
+
+6. <li> Represents a list item within `<ul>` or `<ol>`.
+
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+
+7. <blockquote> Represents a block of text that is a quotation from another source.
+
+<blockquote>
+  This is a blockquote.
+</blockquote>
+
+8. <table> Represents a table.
+
+<table>
+  <!-- Table content: <tr>, <td>, <th> go here -->
+</table>
+
+Other block elements include :
+<header>
+
+These are just a few examples of block-level elements. 
+Each serves a specific purpose in structuring the content and layout of an HTML document. 
+Block-level elements can contain other block-level or inline elements and are often used in 
+combination to create the desired structure of a webpage.
+
+Inline elements
+---------------
+In HTML, inline elements are those that do not start on a new line and only take up as much width as necessary.
+They typically flow within the content, allowing multiple inline elements to appear side by side.
+Here are some common inline elements in HTML:
+
+1. <span> A generic container that does not add any visual change by default.
+
+<span>This is an inline span element.</span>
+
+2. <a> Represents a hyperlink, allowing you to create clickable links.
+
+<a href="https://www.example.com">Visit Example.com</a>
+
+3. <strong> Represents strong importance or emphasis, typically displayed as bold text.
+
+<p>This is <strong>important</strong> text.</p>
+
+4. <em> Represents emphasized text, typically displayed as italicized.
+
+<p>This is <em>emphasized</em> text.</p>
+
+5. <img> Represents an image.
+
+<img src="image.jpg" alt="Description of the image">
+
+6. <br> Represents a line break, forcing the content following it to appear on the next line.
+
+<p>This is some text.<br> This is on a new line.</p>
+
+7. <span> Used with inline styles or scripts to apply specific styles or behavior.
+
+<p>This is <span style="color: red;">red</span> text.</p>
+
+8. <abbr> Represents an abbreviation or acronym, providing additional information when hovered.
+
+<p><abbr title="World Health Organization">WHO</abbr> is an important organization.</p>
+
+9. <cite> Represents the title of a creative work, like the name of a book or movie.
+
+<p><cite>The Great Gatsby</cite> is a classic novel.</p>
+
+10. <code> Represents a fragment of code.
+
+<p>This is an example of <code>inline code</code>.</p>
+
+These are just a few examples of inline elements. 
+Inline elements are often used within block-level elements to provide additional formatting or to convey specific meanings within the content. 
+Unlike block-level elements, inline elements do not force a new line to start, and they only take up as much width as necessary.
+
+
+Detailed comparison between block and inline elements
+-----------------------------------------------------
+Block-level and inline elements in HTML have different behaviors in terms of layout and presentation. Here's a comparison of the two:
+
+Block-level elements:
+^^^^^^^^^^^^^^^^^^^^
+
+1. Start on a new line: Block-level elements typically start on a new line, stacking vertically on top of each other.
+  
+2. Full width: They take up the full available width of their container, extending from the left edge to the right edge.
+
+3. Height: The height of a block-level element is determined by its content, or it can be explicitly set using the `height` property.
+
+4. Can contain other elements: Block-level elements can contain other block-level and inline elements.
+
+5. Examples: `<div>`, `<p>`, `<h1>` to `<h6>`, `<ul>`, `<ol>`, `<li>`, `<table>`, `<form>`, etc.
+
+Inline elements:
+^^^^^^^^^^^^^^^
+
+1. Do not start on a new line: Inline elements do not start on a new line; they flow within the content, appearing on the same line as the surrounding text or elements.
+
+2. Take up as much width as necessary: They only take up as much width as necessary to accommodate their content.
+We cannot explicitly set width for them. It will not be respected.
+
+3. Height: The height of an inline element is determined by the content, and you cannot explicitly set a height.
+
+4. Cannot contain block-level elements: Inline elements cannot contain block-level elements but can contain other inline elements.
+
+5. Vertical margins and padding and height properties do not affect inline elements due to the nature of how inline elements flow with content on a webpage. 
+   Horizontal padding and margins are respected for inline elements, 
+Note: When vertical paddings are given to inline element it creates an illusion of padding by adding a transparent layer around the element which can be seen by setting the background but it has no effect on the position of the element
+
+6. Examples: `<span>`, `<a>`, `<strong>`, `<em>`, `<img>`, `<br>`, `<code>`, `<abbr>`, etc.
+
+Usage:
+^^^^^^
+- Block-level elements are often used to create the overall structure of a webpage and group content into sections.
+- Inline elements are typically used for small-scale styling, emphasizing text, creating links, or embedding images within a line of text.
+
+Inline-block elements
+---------------------
+
+Similar to inline elements, inline-block elements do not start on a new line. 
+They flow within the content, allowing multiple inline-block elements to appear side by side.
+Similar to block-level elements, inline-block elements have a box model with properties like width, height, margin, padding, and border. 
+This allows you to control the dimensions and spacing of the element.
+You can set both width and height for inline-block elements, which is a characteristic not typically found in pure inline elements.
+inline-block elements respect both horizontal and vertical margins and padding, allowing you to control the spacing around the element.
+inline-block elements are aligned with the baseline of the surrounding text by default. This is similar to how inline elements are aligned.
+
+################
+Display property
+################
+
+It allows us to change the behavior of an element to block / inline / inline-block
+
+display: none; //hides the element but remains in DOM
+display: block;
+display: inline-block;
+display: inline;
+
+############################################
 General notes around css used in MM-FRONTEND
 ############################################
+> body element
+--------------
+<body>s is also a block element with default margin of 8px;
+
 
 > DSM classes for 100% width and height
 -----------------------------------
