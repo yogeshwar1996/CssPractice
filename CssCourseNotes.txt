@@ -156,6 +156,35 @@ selector1, selector2, selector3 {
   /* Shared styles for selector1, selector2, and selector3 */
 }
 
+
+Example 
+ p, .info, #special-text {
+  font-family: 'Verdana', sans-serif;
+  color: green;
+}
+
+<p> Some text </p> // Qualifies
+
+<span> Some text </span> // Qualifies
+
+<h1 id="special-text"> Some text </h1> // Qualifies
+
+
+the css rules will apply to all that are either <p> tags or elements with 'info' class or elements with id 'special-text'
+
+Compound Selector
+-----------------
+
+If you have a element which has multiple classes defined on it like
+<p class="class1 class2"> Some text </p>
+
+Then selector for such element will be 
+
+.class1.class2 { 
+    color: red
+}
+
+Note: the order of classes does not matter
 ######################
 
 Cascading and Specificity
