@@ -484,7 +484,7 @@ We cannot explicitly set width for them. It will not be respected.
 4. Cannot contain block-level elements: Inline elements cannot contain block-level elements but can contain other inline elements.
 
 5. Vertical margins and padding and height properties do not affect inline elements due to the nature of how inline elements flow with content on a webpage. 
-   Horizontal padding and margins are respected for inline elements, 
+   Horizontal padding and margins are respected for inline elements, but widths are not, 
 Note: When vertical paddings are given to inline element it creates an illusion of padding by adding a transparent layer around the element which can be seen by setting the background but it has no effect on the position of the element
 
 6. Examples: `<span>`, `<a>`, `<strong>`, `<em>`, `<img>`, `<br>`, `<code>`, `<abbr>`, etc.
@@ -515,6 +515,19 @@ display: none; //hides the element but remains in DOM
 display: block;
 display: inline-block;
 display: inline;
+
+
+display: none vs visibility: hidden
+
+display:none; removes the element to which you apply it from the document flow. 
+This means that the element is not visible and it also doesn't "block its position".
+
+visibility: hidden;
+If you only want to hide an element but you want to keep its place (i.e. other elements don't fill the empty spot), 
+
+Note: In both the cases element is present in the DOM
+
+
 
 ############################################
 General notes around css used in MM-FRONTEND

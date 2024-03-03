@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+}
+
+#product-overview {
+  background: #ff1b68;
+  width: 100%;
+  height: 528px;
+  padding: 10px;
+  border: 5px solid black;
+}
+
+.section-title {
+  color: #2ddf5c;
+}
+
+#product-overview h1 {
+  color: white;
+  font-family: "Anton", sans-serif;
+}
+
+/* h1 {
+    font-family: sans-serif;
+} */
+
+.main-header {
+  background: #2ddf5c;
+  padding: 8px 16px;
+}
+
+.main-header > div {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.brand {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.main-nav {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: right;
+  /* To have effect of text align right we need to set width */
+  width: calc(100% - 110px);
+}
+
+.main-nav__items {
+  /* Note it inherits the display and text-align properties from the  .main-nav */
+
+  /*resetting the default margin and paddings on unordered list and getting rid of bullet points*/
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+.main-nav__item {
+  display: inline-block;
+  margin-left: 16px;
+  padding: 10px;
+  background-color: #ff1b68;
+  border-radius: 8px;
+}
+.main-nav__item:hover {
+  background-color: white;
+}
+.main-nav__item:hover a {
+  color: #ff1b68;
+}
+
+.main-nav__item a {
+  color: white;
+  text-decoration: none;
+}
+.main-nav__item a::after {
+  vertical-align: middle;
+  margin-left: 4px;
+  content: url("information-button.png");
+}
