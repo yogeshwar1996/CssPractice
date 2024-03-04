@@ -185,6 +185,38 @@ Then selector for such element will be
 }
 
 Note: the order of classes does not matter
+
+Similarly if you have an element with a class you as follows
+<p class="summary"> Hi </p>
+<p> Hello </p>
+<span class="summary"> Bye </span>
+
+If you want to target only the paragaraph with summary class
+p.summary {
+  color: red;
+}
+
+Note: p.summary {} is different from p .summary {}
+The former means p element that has a class summary
+The latter means an element with summary class that is descendant of p tag
+
+
+#####################
+:not() and !important
+#####################
+To select all anchor tags that dont have "active" class
+a:not(.active) {
+
+}
+
+To override a value forcefully
+
+a {
+  color: red !important;
+}
+
+
+using :not() and !important is discouraged former is a peformance bottleneck and latter is bad code design
 ######################
 
 Cascading and Specificity
@@ -556,6 +588,13 @@ If you only want to hide an element but you want to keep its place (i.e. other e
 
 Note: In both the cases element is present in the DOM
 
+
+####################
+Color and background
+
+color: red // to set color for the text
+background: url('image.png') // to set a background image
+background-color: white; // to set background's color
 
 
 ############################################
