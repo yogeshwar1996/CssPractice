@@ -27,6 +27,14 @@
     background: red;
  }
 
+ Note: if we have more than 1 stylesheet then order will affect how the styles of one file override other
+
+ Eg 
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="main.css" />
+  
+CSS in shared.css will be overwritten by main.css
+
 ###################
 Adding google fonts
 ###################
@@ -376,10 +384,10 @@ Between two elements one which has higher margin is the final margin between the
 <ul>
     <li style="margin: 10px">One</li>
     <li style="margin: 20px">Two</li>
-    <li style="margin-top: 8px">Three</li> //Here the 8px is collapsed into the 20px margin of above li
+    <li style="margin-top: 8spx">Three</li> //Here the 8px is collapsed into the 20px margin of above li
 </ul>
 
-
+Note: margin: auto;  sets equal margins on both sides of the block element making it look like horizontally in the center
 Height and Width
 ----------------
 When we set height and width for any element's content purely excluding the padding and border and margin
@@ -634,6 +642,15 @@ end => bottom
 space-between
 space-around 
 stretch
+
+float
+-----
+https://developer.mozilla.org/en-US/docs/Web/CSS/float
+
+The float CSS property places an element on the left or right side of its container,
+allowing text and inline elements to wrap around it
+
+float: left/right;
 
 ########
 Shadows
