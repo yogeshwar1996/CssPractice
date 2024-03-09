@@ -565,6 +565,7 @@ This allows you to control the dimensions and spacing of the element.
 You can set both width and height for inline-block elements, which is a characteristic not typically found in pure inline elements.
 inline-block elements respect both horizontal and vertical margins and padding, allowing you to control the spacing around the element.
 inline-block elements are aligned with the baseline of the surrounding text by default. This is similar to how inline elements are aligned.
+By default inline-block elements take up only as much width as its content require but we can explicitly set a width for it and its respected.
 
 ################
 Display property
@@ -591,10 +592,57 @@ Note: In both the cases element is present in the DOM
 
 ####################
 Color and background
+####################
 
 color: red // to set color for the text
 background: url('image.png') // to set a background image
 background-color: white; // to set background's color
+
+#########
+Alignment
+#########
+
+vertical-alignment: baseline/top/middle/bottom
+-----------------------------------------------
+The vertical-align CSS property sets vertical alignment of an inline, inline-block element inside its containing box
+Note: you can't use it to vertically align block-level elements.
+
+text-align: start/center/end/justify
+-------------------------------------
+Sets the horizontal alignment of the content
+
+justify-content and align-items
+===============================
+The justify-content and align-items properties are used in CSS flexbox to align items within a flex container
+
+justify-content / justify-items
+-------------------------------------
+This property is used to align content/item horizontally inside flex container.
+start => left
+center
+end => right
+space-between
+space-around
+stretch
+
+ align-content / align-items
+------------------------------ 
+It is used to align items vertically inside the flex container.
+start => top
+center
+end => bottom
+space-between
+space-around 
+stretch
+
+########
+Shadows
+########
+
+box-shadow: 5px 5px rgba(0,0,0,0.5);
+
+Adds shadow effects around an element. 
+A box shadow is described by X and Y offsets relative to the element and color.
 
 
 ############################################
@@ -700,16 +748,3 @@ Example
 }
 
 
-> justify-content and align-items
----------------------------------
-The justify-content and align-items properties are used in CSS flexbox to align items within a flex container
-
-# justify-content
-This property is used to align items along the main axis of the flex container.
-For a flex container with a horizontal main axis, it will align the items horizontally. 
-The values for justify-content include flex-start, flex-end, center, space-between, and space-around.
-
-# align-items 
-Unlike justify-content, the align-items property is used to align items on the cross axis of the flex container.
-This means it controls the vertical alignment of items for a flex container with a horizontal main axis. 
-The values for align-items include flex-start, flex-end, center, baseline, and stretch.

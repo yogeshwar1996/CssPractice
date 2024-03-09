@@ -28,14 +28,62 @@ body {
 } */
 .plan {
   display: inline-block;
-  background-color: lightgreen;
+  background-color: rgb(124, 227, 199);
   text-align: center;
   padding: 16px;
   margin: 8px;
   width: 30%;
   vertical-align: middle;
+  border-radius: 4px;
 }
 
+.plan__highlighted {
+  background-color: rgba(63, 147, 63, 0.9);
+  color: white;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.plan__highlighted .plan__title {
+  color: white;
+}
+
+.plan__badge {
+  background-color: white;
+  color: darkgreen;
+  padding: 8px;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+.plan__features {
+  list-style: none;
+  padding: 0px;
+}
+.plan__features li {
+  margin: 4px 0px;
+}
+
+.plan__title {
+  color: rgb(42, 68, 4);
+}
+.plan__price {
+  color: rgba(57, 64, 139, 0.824);
+}
+.plan__button {
+  background-color: rgb(14, 78, 142);
+  color: white;
+  border-radius: 4px;
+  font: inherit;
+  padding: 8px;
+  border: 0px solid white;
+}
+
+.plan__button:hover {
+  background-color: rgb(103, 54, 137);
+  color: white;
+  border: 0px solid white;
+  cursor: pointer;
+}
 /* h1 {
     font-family: sans-serif;
 } */
