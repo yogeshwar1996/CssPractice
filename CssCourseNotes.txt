@@ -662,6 +662,42 @@ Adds shadow effects around an element.
 A box shadow is described by X and Y offsets relative to the element and color.
 
 
+#########
+Position
+#########
+
+position: static/fixed/relative/absolute/sticky
+
+This property can be applied to both block level and inline elements
+
+> static - default one, follows the normal document flow
+
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+</body>
+
+> fixed - When position of the element is set to fixed, it's removed from the normal document flow, 
+and no space is created for the element in the page layout and gets attached to viewport.
+When we scroll on the page the element will always be visible
+
+Note: In case we set position fixed for 1st div it will start behaving like inline-block element
+but the 2nd div will take its place and 1st div will show on top of it.
+
+> Top/Bottom/Left/Right - We can move element in these directions only when position is something other that default value of static
+It can be fixed/relative/absolute/sticky
+
+> Position for background and z-index:
+Lets say we want to add background, we can add it to body because its the container and will cover all the divs
+It will be simplest to do so as well
+
+Now assume we add a another div and then add a background to its for all the other divs then we need 
+to set its position as fixed so that it comes out of the document flow and gets attched to the view port
+and we need to give a z-index: -1 so it shows in the back
+
+Note z-index only works with elements with position other than static
+
 ############################################
 General notes around css used in MM-FRONTEND
 ############################################

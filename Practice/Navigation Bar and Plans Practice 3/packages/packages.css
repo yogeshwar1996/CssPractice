@@ -2,6 +2,20 @@ main {
   padding-top: 32px;
 }
 
+.background {
+  background: url("../freedom.jpg");
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* .packages {
+  background: url("../freedom.jpg");
+  width: 100%;
+  height: 100%;
+} */
+
 .package {
   margin: 16px 0px;
   width: 80%;
