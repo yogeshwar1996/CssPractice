@@ -16,10 +16,20 @@ main {
   height: 100%;
 } */
 
+.recommended-badge {
+  background-color: tomato;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: fit-content;
+  padding: 4px;
+  font-size: 14px;
+}
 .package {
   margin: 16px 0px;
   width: 80%;
   border: 4px solid black;
+  position: relative;
 }
 .package:hover {
   box-shadow: 8px 8px rgb(191, 201, 173);
@@ -32,10 +42,6 @@ main {
   display: block;
 }
 
-.package-title {
-}
-.package-subtitle {
-}
 .package-info {
   padding: 16px;
   border: 4px solid rgb(255, 255, 255);
@@ -44,14 +50,16 @@ main {
 }
 
 #plus {
-  background-color: yellowgreen;
+  background-color: #9acd32b0;
 }
 
 #free {
-  background-color: rgb(124, 166, 41);
+  background-color: rgb(124, 166, 41, 0.7);
+  float: right;
 }
 
 #premium {
-  background-color: rgb(53, 71, 18);
+  clear: both;
+  background-color: rgb(53, 71, 18, 0.75);
   color: rgb(161, 255, 103);
 }

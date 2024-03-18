@@ -610,6 +610,8 @@ background-color: white; // to set background's color
 Alignment
 #########
 
+To vertically align the content of the block element add equal amount of top and bottom padding
+
 vertical-alignment: baseline/top/middle/bottom
 -----------------------------------------------
 The vertical-align CSS property sets vertical alignment of an inline, inline-block element inside its containing box
@@ -643,14 +645,24 @@ space-between
 space-around 
 stretch
 
-float
------
+float & clear
+-------------
 https://developer.mozilla.org/en-US/docs/Web/CSS/float
 
 The float CSS property places an element on the left or right side of its container,
 allowing text and inline elements to wrap around it
 
 float: left/right;
+
+Note: Float takes the element out of the document flow hence and the text from the next block level elements start floating around it
+If you want the elements space to be reserved and no of text around it you can set clear property on the next element and assign the value "both"
+
+clear: both;
+Eg
+<div> Hello </div>
+<div style="float: right"> HI </div>
+<div style="clear: both"> Bye </div>
+
 
 ########
 Shadows
@@ -670,33 +682,101 @@ position: static/fixed/relative/absolute/sticky
 
 This property can be applied to both block level and inline elements
 
-> static - default one, follows the normal document flow
+> static - default one, follows the normal document flow, elements appear in the order they are present in DOM
 
-<body>
+> fixed - element is removed from the normal document flow, and no space is created for the element in the page layout and gets attached to viewport.
+When we scroll on the page the element will always be visible.
+
+> absolute - the element is position absolutely to its ancestor which has position other than static
+
+> relative - The element is positioned according to the normal flow of the document, 
+and then offset relative to itself based on the values of top, right, bottom, and left
+Note: With this property and setting top/bottom/left/right element
+may go out of the container and to hide it we can set the property overflow: hidden
+But if we set this property on <body> it passes it to <html> so when we need it on <body> ensure its on both <body> and <html>
+
+> sticky - element is sticks to the nearest ancestor which has scroll untill the border of the last element of the container is reached. 
+Note: for this we additionally need to mention property `top`  and its value will tell how far from the top of the scrolling ancestor the element should stick
+
+
+> Top/Bottom/Left/Right - We can move element in these directions only when position is something other that default value of static
+It can be fixed/relative/absolute/sticky
+
+z-index
+========
+
+Lets say we want to add background, we can add it to body because its the container and will cover all the divs
+It will be simplest to do so as well
+
+<body class="background">
   <div></div>
   <div></div>
   <div></div>
 </body>
 
-> fixed - When position of the element is set to fixed, it's removed from the normal document flow, 
-and no space is created for the element in the page layout and gets attached to viewport.
-When we scroll on the page the element will always be visible
-
-Note: In case we set position fixed for 1st div it will start behaving like inline-block element
-but the 2nd div will take its place and 1st div will show on top of it.
-
-> Top/Bottom/Left/Right - We can move element in these directions only when position is something other that default value of static
-It can be fixed/relative/absolute/sticky
-
-> Position for background and z-index:
-Lets say we want to add background, we can add it to body because its the container and will cover all the divs
-It will be simplest to do so as well
+.background {
+  background: ('image.jpg')
+}
 
 Now assume we add a another div and then add a background to its for all the other divs then we need 
 to set its position as fixed so that it comes out of the document flow and gets attched to the view port
 and we need to give a z-index: -1 so it shows in the back
 
-Note z-index only works with elements with position other than static
+<body>
+  <div class="background">
+  <div></div>
+  <div></div>
+  <div></div>
+</body>
+
+.background {
+  background: ('image.jpg')
+  position: fixed;
+  z-index: -1;
+}
+
+Notes
+* z-index only works in context of the container element. i.e we can tell which element among the siblings will come on top or bottom
+* z-index only works with elements with position other than static
+* If two elements have same z-index then their order in DOM will determin which will show on top, element which comes later in DOM will appear on top
+
+Example
+
+<body>
+ <div class="one"> First </div>
+ <div clas="two"> 
+    <div>Second A </div>
+    <div>Second B </div>
+    <div>Second C </div>
+ </div>
+ <div class="three"> Third </div>
+
+When position is set fixed for classes "one", "two", "three"
+The corsp divs go out of the document flow and stack on each other in the order they appear in DOM
+i.e "three" on top of "two" which is on top of "one"
+
+Note the divs initially stack at the  point in their containers where content starts after padding 
+Now we can move them by setting top as 10px, 20px, 30px on classes "one", "two", "three" respectively
+
+Note these value are not relative to the container but the view port.
+So the divs will move 10px 20px 30px from top of the view port
+
+Note: These div now behave line inline-block eleemnt and we can set widths on them.
+
+We can control which div will appears on top among classes  "one", "two", "three" using z-index
+
+Now lets set positions of children of second div as fixed.
+Again the child divs initially stack at the  point in "Second" div where content starts after padding 
+Again these divs now behave line inline-block eleemnt and we can set widths on them.
+We can move them by setting top as 10px, 20px, 30px on classes "one", "two", "three" respectively
+and this movement will be relative to the viewport
+
+Important Note: The the z-index value of child elements of Second div can be used to control how they appear on top of each other
+But no matter how big z-index you give them they will not show on top of div's 'One' and 'Three' and nor will they go behind the div 'Two'
+
+
+
+
 
 ############################################
 General notes around css used in MM-FRONTEND

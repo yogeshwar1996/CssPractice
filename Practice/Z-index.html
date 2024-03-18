@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First HTML Page</title>
+    <style>
+      .container {
+        padding: 20px;
+      }
+      .one,
+      .two,
+      .three {
+        border: 2px solid black;
+        padding: 20px 0px;
+        text-align: center;
+        margin: 10px;
+        position: fixed;
+        width: 500px;
+      }
+
+      .one {
+        background-color: tomato;
+        top: 10px;
+        left: 200px;
+        z-index: 1;
+      }
+      .two {
+        background-color: yellow;
+        padding: 50px 20px;
+        top: 20px;
+        height: 140px;
+      }
+      .three {
+        background-color: gray;
+        top: 170px;
+        left: 10px;
+        z-index: 2;
+      }
+      .two-a,
+      .two-b,
+      .two-c {
+        border: 2px solid red;
+        padding: 20px 0px;
+        margin: 20px 0px;
+        position: fixed;
+        width: 200px;
+      }
+      .two-a {
+        background-color: green;
+        top: 50px;
+        z-index: 2;
+      }
+      .two-b {
+        background-color: pink;
+        top: 90px;
+        left: 0px;
+      }
+      .two-c {
+        background-color: purple;
+        top: 122px;
+        left: 180px;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body class="container">
+    <div class="one">One</div>
+
+    <div class="two">
+      Two
+      <div class="two-a">Two A</div>
+      <div class="two-b">Two B</div>
+      <div class="two-c">Two C</div>
+    </div>
+
+    <div class="three">Three</div>
+  </body>
+</html>

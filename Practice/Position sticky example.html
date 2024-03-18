@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .parent-container {
+        height: 2000px;
+      }
+      .container {
+        border: 2px solid black;
+        text-align: center;
+        padding: 20px;
+        margin: 20px;
+        /* Try the following to check the sticky behaviour in context of this container 
+        height: 250px;
+        overflow: auto; */
+      }
+      .first {
+        padding: 50px 0px;
+        border: 4px solid green;
+        background-color: tomato;
+        position: sticky;
+        top: 40px;
+      }
+      .second {
+        padding: 50px 0px;
+        background-color: rgb(250, 250, 97);
+        margin: 10px 0px;
+        border: 4px solid rgb(162, 22, 158);
+      }
+      .third {
+        padding: 50px 0px;
+        background-color: rgb(95, 255, 167);
+        border: 4px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent-container">
+      <div class="container">
+        <div class="first">India</div>
+        <div class="second">UK</div>
+        <div class="third">Germany</div>
+      </div>
+      <div class="container">
+        <div class="first">Hindi</div>
+        <div class="second">English</div>
+        <div class="third">Deutsch</div>
+      </div>
+      <div class="container">
+        <div class="first">First</div>
+        <div class="second">Second</div>
+        <div class="third">Third</div>
+      </div>
+    </div>
+  </body>
+</html>
