@@ -1,6 +1,9 @@
 #product-overview {
-  background: url("freedom.jpg");
-  height: 528px;
+  background-image: url("freedom.jpg");
+  background-size: cover;
+  background-position: 0% 45%;
+  background-repeat: no-repeat;
+  height: 628px;
   padding: 10px;
 }
 
@@ -10,6 +13,8 @@
 }
 
 #product-overview h1 {
+  position: relative;
+  top: 80%;
   color: white;
   font-family: "Anton", sans-serif;
 }

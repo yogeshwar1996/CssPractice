@@ -775,9 +775,52 @@ Important Note: The the z-index value of child elements of Second div can be use
 But no matter how big z-index you give them they will not show on top of div's 'One' and 'Three' and nor will they go behind the div 'Two'
 
 
+################
+Background sizes
+
+Note we usually give background property but we can give specific properties also like
+background-image, background-size, background-color etc
 
 
+Note:
+If we define both background-color and background-image then the image will display
 
+background-size: 100px; 
+This will show many images with width 100.The height of image is automatically selected to maintain the aspect ratio
+
+background-size: 100px 200px; // will set width to 100px and height to 200px 
+
+We can also set values in %
+background-size: 50%; // will set width to 50% of the container width maintaining the aspect ratio
+
+Case: If you want to set to the height without distorting the aspect ratio you can set width to auto
+background-size: auto 100%; // will set height to 100% of container's height and width will be such that aspect ratio is maintained.
+
+Case: if you want the image to cover the entire available container space
+background-size: cover; // will cover/fill the entire contianer space, maintain the aspect ratio but may crop the image vertically or horizontally
+//It will set width to 100% in landscape mode and and then adjust the height to maintain aspect ratio
+//It will set height to 100% in potrait mode and and then adjust the width to maintain aspect ratio
+
+Case: if you want the enitre image to show in the container without cropping or stretching not necessarily filling the entire container space (ie can leave empty space also)
+background-size: contain; 
+
+Default case: When you want to show the original image as is, in its original height, width and aspect ratio.
+background-size: auto; 
+
+To controll the repeat behaviour we have
+background-repeat: no-repeat;// to show only 1 image and disable repitition
+background-repeat: repeat-x; // to repeat the image only in the x-axis
+background-repeat: repeat-y; // to repeat the image only in the y-axis
+
+
+To control the position of background we have position
+https://developer.mozilla.org/en-US/docs/Web/CSS/background-position
+background-position: 20px; // This means push the image 20px to right on x-axis inside the container 
+background-position: 20px 20px; // This means push the image 20px to right on x-axis and 20px to bottom on the y-axis inside the container 
+we can give values in px as well as %
+Note if the value is in % then 
+background-position: 20% 40%; 
+means pull the image to left by 20% on x-axis and pull the image to top by 40% on y-axis
 ############################################
 General notes around css used in MM-FRONTEND
 ############################################
