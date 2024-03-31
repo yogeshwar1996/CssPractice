@@ -331,6 +331,7 @@ ol li:not(:first-child)  {
 #######################
 Understanding box model
 #######################
+
 The outline of the element is called border, 
 between border and next element we have margin
 between border and content of element we have padding
@@ -674,20 +675,20 @@ Adds shadow effects around an element.
 A box shadow is described by X and Y offsets relative to the element and color.
 
 
-#########
-Position
-#########
+######################
+Positioning an element
+######################
 
-position: static/fixed/relative/absolute/sticky
+Allowed values: static/fixed/relative/absolute/sticky
 
-This property can be applied to both block level and inline elements
+`position` property can be applied to both block level and inline elements
 
-> static - default one, follows the normal document flow, elements appear in the order they are present in DOM
+> static - default value, follows the normal document flow, elements appear in the order they are present in DOM
 
 > fixed - element is removed from the normal document flow, and no space is created for the element in the page layout and gets attached to viewport.
 When we scroll on the page the element will always be visible.
 
-> absolute - the element is position absolutely to its ancestor which has position other than static
+> absolute - the element is position absolutely to its ancestor, which has position other than static
 
 > relative - The element is positioned according to the normal flow of the document, 
 and then offset relative to itself based on the values of top, right, bottom, and left
@@ -777,13 +778,12 @@ But no matter how big z-index you give them they will not show on top of div's '
 
 ################
 Background sizes
+################
 
 Note we usually give background property but we can give specific properties also like
 background-image, background-size, background-color etc
 
-
-Note:
-If we define both background-color and background-image then the image will display
+Note: If we define both background-color and background-image then the image will display
 
 background-size: 100px; 
 This will show many images with width 100.The height of image is automatically selected to maintain the aspect ratio
@@ -797,9 +797,10 @@ Case: If you want to set to the height without distorting the aspect ratio you c
 background-size: auto 100%; // will set height to 100% of container's height and width will be such that aspect ratio is maintained.
 
 Case: if you want the image to cover the entire available container space
-background-size: cover; // will cover/fill the entire contianer space, maintain the aspect ratio but may crop the image vertically or horizontally
-//It will set width to 100% in landscape mode and and then adjust the height to maintain aspect ratio
-//It will set height to 100% in potrait mode and and then adjust the width to maintain aspect ratio
+background-size: cover; 
+Explanation : Will cover or fill the entire contianer space, maintain the aspect ratio but may crop the image vertically or horizontally
+It will set width to 100% in landscape mode and and then adjust the height to maintain aspect ratio
+It will set height to 100% in potrait mode and and then adjust the width to maintain aspect ratio
 
 Case: if you want the enitre image to show in the container without cropping or stretching not necessarily filling the entire container space (ie can leave empty space also)
 background-size: contain; 
@@ -807,26 +808,62 @@ background-size: contain;
 Default case: When you want to show the original image as is, in its original height, width and aspect ratio.
 background-size: auto; 
 
-To controll the repeat behaviour we have
+
+#################
+Background repeat
+#################
+Case: To controll the repeat behaviour we have
 background-repeat: no-repeat;// to show only 1 image and disable repitition
 background-repeat: repeat-x; // to repeat the image only in the x-axis
 background-repeat: repeat-y; // to repeat the image only in the y-axis
 
 
-To control the position of background we have position
-https://developer.mozilla.org/en-US/docs/Web/CSS/background-position
+###################
+Background position
+###################
+Case: To control the position of background we have position (https://developer.mozilla.org/en-US/docs/Web/CSS/background-position)
 background-position: 20px; // This means push the image 20px to right on x-axis inside the container 
 background-position: 20px 20px; // This means push the image 20px to right on x-axis and 20px to bottom on the y-axis inside the container 
-we can give values in px as well as %
-Note if the value is in % then 
-background-position: 20% 40%; 
-means pull the image to left by 20% on x-axis and pull the image to top by 40% on y-axis
+
+Note: we can give values in px as well as %
+background-position: 20% 40%; //means pull the image to left by 20% on x-axis and pull the image to top by 40% on y-axis
+
+########################
+To fixate the background
+########################
+Case: To fixate the background so that the content scrolls on top of it
+background-attachment: fix;
+
+#################
+Background Origin
+#################
+
+Just like box model, where we have box-sizing property, for the background, we have `background-origin` property.
+Allowed values: padding-box/border-box/content-box
+
+background-origin: border-box; // the background starts from the border
+background-origin: padding-box; // the background starts from the padding
+background-origin: content-box; // the background starts from the content
+
+###############
+Background Clip
+###############
+
+`background-clip` property sets whether an element's background extends underneath its border box, padding box, content box or text
+
+Usage:
+background-clip: border-box;
+background-clip: padding-box;
+background-clip: content-box;
+background-clip: text; // Useful, when we have text with big font and transparent color like - "font-size: 52px;font-weight: 700;color: transparent;"
+
+Note: If both background-origin and background-clip are defined, background-clip overrides the styling
 ############################################
 General notes around css used in MM-FRONTEND
 ############################################
 > body element
 --------------
-<body>s is also a block element with default margin of 8px;
+<body> is also a block element with default margin of 8px;
 
 
 > DSM classes for 100% width and height
