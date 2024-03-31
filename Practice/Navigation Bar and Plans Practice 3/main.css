@@ -1,10 +1,16 @@
 #product-overview {
   background-image: url("freedom.jpg");
   background-size: cover;
-  background-position: 0% 45%;
+  background-position: left 0% top 45%;
   background-repeat: no-repeat;
-  height: 628px;
-  padding: 10px;
+  border: 4px dashed rgb(242 255 0);
+  background-origin: border-box; /*Note: It does not work with background-attachment: fixed*/
+  background-clip: padding-box;
+  background-attachment: scroll;
+  position: relative;
+  margin-top: 43px;
+  height: 528px;
+  padding: 0px 10px;
 }
 
 .section-title {
@@ -14,7 +20,7 @@
 
 #product-overview h1 {
   position: relative;
-  top: 80%;
+  top: 70%;
   color: white;
   font-family: "Anton", sans-serif;
 }
