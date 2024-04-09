@@ -664,16 +664,18 @@ Eg
 <div style="float: right"> HI </div>
 <div style="clear: both"> Bye </div>
 
-
 ########
 Shadows
 ########
 
-box-shadow: 5px 5px rgba(0,0,0,0.5);
+box-shadow: 1px 1px 5px 5px rgba(0,0,0,0.5);
 
 Adds shadow effects around an element. 
-A box shadow is described by X and Y offsets relative to the element and color.
-
+A box shadow is described as follows
+1st param is X offsets 
+2nd param is Y offsets
+3rd param is blur-radius
+4th param is spread-radius
 
 ######################
 Positioning an element
@@ -885,6 +887,37 @@ block or inline-block
 Note: all the stylings we do on background images like background-size, background-position etc
 They are not available for images in general.
 
+###########################
+Gradients (Linear, Radiant)
+
+These can be set in the background-image property, like
+background-image: linear-gradient(direction, Color 1, Color 2, transparent, ...,Color N)
+
+The linear-gradient goes from one edge to another one
+Note: transparent is useful if you want to show fading effect or if you have multiple backgrounds
+Note: each color is given equal space
+Note: direction can be one of (to bottom, to left bottom, 30deg, 0deg) etc
+Note: we can mention the space a color should occupy as follows
+background-image: linear-gradient(to bottom, red 70%, blue 30%)
+
+The radial-gradient starts with a certain shape and then transitions to the surrounding area
+Default shape is an ellipse, positioned in the center of the container.
+Usage: 
+background-image: radial-gradient(value, color 1, color 2,..., color n)
+value can be a 
+ - shape, like one of (circle, ellipse)
+ - shape with position, like one of (circle at top left, circle at bottom right, circle at 20% 50%, circle at 20px, 50px)
+ - shape with size and position, like one of (circle 20px at 20% 50%, ellipse 40px 100px at 20% 50%)
+ - shape with reference, like one of (ellipse farthest-side at 20px 100px, ellipse farthest-corner at 20px 100px
+ )
+https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient
+
+
+####################
+Multiple backgrounds
+
+we can define multiple background images (which can be actual images or gradients), but we can have only one 
+background color
 ############################################
 General notes around css used in MM-FRONTEND
 ############################################
