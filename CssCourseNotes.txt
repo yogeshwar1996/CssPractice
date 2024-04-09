@@ -868,7 +868,7 @@ Styling images
 When we add an image inside a container element then by default the height and width of image is used,
 and the height and width of container is not respected.
 
-To make image respect the size of the container element, ensure the container element's display property is set to 
+>> To make image respect the size of the container element, ensure the container element's display property is set to 
 block or inline-block
 
 <span classs="image-container">
@@ -886,6 +886,105 @@ block or inline-block
 
 Note: all the stylings we do on background images like background-size, background-position etc
 They are not available for images in general.
+
+>> To show the image in circle shape
+img {
+  border-radius: 50%  
+}
+
+>> If you want an image to scale down if it has to, but never scale up to be larger than its original size, add the following:
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+>> To add transparency to image use opacity
+img {
+  opacity: 0.5;
+}
+
+>> To position some text on the image (https://www.w3schools.com/css/css3_images.asp)
+
+<div class="container">
+  <img src="img_5terre_wide.jpg" alt="Cinque Terre" width="1000" height="300">
+  <div class="center">Centered</div>
+</div>
+
+.container {
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 18px;
+  transform: translate(-50%, -50%);
+  /*NOTE: When you specify -50% for both horizontal and vertical translations,
+   it means the element will be moved halfway in both directions.
+   This effectively centers the element both horizontally and vertically within its containing element
+   or relative to its parent.*/
+}
+
+img { 
+  width: 100%;
+  height: auto;
+  opacity: 0.3;
+}
+
+>> To create an overlay effect on hover
+
+<div class="container">
+  <img src="img_avatar.png" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+</div>
+
+.container {
+  position: relative;
+  width: 50%
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+ 
+
+ >> To flip an image
+ img:hover {
+  transform: scaleX(-1);
+}
+
 
 ###########################
 Gradients (Linear, Radiant)
@@ -916,8 +1015,29 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient
 ####################
 Multiple backgrounds
 
-we can define multiple background images (which can be actual images or gradients), but we can have only one 
-background color
+we can define multiple background images (which can be actual images or gradients), 
+but we can have only one background color
+
+Example:
+background-image: linear-gradient(to bottom, transparent 80%, #f43400d9), url("./images/freedom.jpg");
+
+#######
+Filters
+The filter CSS property applies graphical effects like blur or color shift to an element.
+Filters are commonly used to adjust the rendering of images, backgrounds, and borders.
+
+Some examples - 
+filter: blur(5px);
+filter: brightness(0.4);
+filter: contrast(200%);
+
+One can also apply multiple filters like - filter: contrast(175%) brightness(3%);
+More on filters => https://developer.mozilla.org/en-US/docs/Web/CSS/filter
+
+################
+Working with SVG
+
+
 ############################################
 General notes around css used in MM-FRONTEND
 ############################################

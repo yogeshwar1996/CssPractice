@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        /*Position other than default (static) enables the absolutely positioned
+        child element to refer to it*/
+        position: relative;
+        width: 20%;
+      }
+
+      .image {
+        opacity: 1;
+        width: 100%;
+        height: auto;
+        transition: 0.5s ease;
+        display: block;
+        /*By default, an <img> element is an inline-level element,
+          meaning it flows along with text and other inline-level elements.
+          However, setting display: block; changes it into a block-level element.
+          Block-level elements occupy the entire width of their container and start on a new line.
+          This allows you to apply width, height, padding, margin, and other block-level properties to the <img> element.
+          As a block-level element, an <img> element will respect any margin and padding applied to it.
+          This means you can use margin and padding to create space around the image or 
+          between the image and other elements on the page.*/
+      }
+
+      .middle {
+        transition: 0.5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .container:hover .image {
+        opacity: 0.5;
+      }
+
+      .container:hover .middle {
+        opacity: 1;
+      }
+
+      .text {
+        background-color: #4caf50;
+        color: white;
+        font-size: 16px;
+        padding: 16px 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Fade in a Box</h2>
+
+    <div class="container">
+      <img
+        src="img_avatar.png"
+        alt="Avatar"
+        class="image"
+        style="width: 100%"
+      />
+      <div class="middle">
+        <div class="text">John Doe</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -95,12 +95,15 @@
 }
 
 .feature-image {
+  /* commeted following properties to show SVG instead of background image
   background-size: cover;
   background-image: url("./images/happy-customer.jpg");
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   width: 120px;
   height: 120px;
   border: 2px solid rgb(105, 243, 128);
   border-radius: 50%;
   margin: auto;
+  /* Add suitable padding to ensure the image fits in the container*/
+  padding: 18px;
 }
