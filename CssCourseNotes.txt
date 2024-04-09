@@ -828,9 +828,9 @@ background-position: 20px 20px; // This means push the image 20px to right on x-
 Note: we can give values in px as well as %
 background-position: 20% 40%; //means pull the image to left by 20% on x-axis and pull the image to top by 40% on y-axis
 
-########################
-To fixate the background
-########################
+#####################
+Background attachment
+#####################
 Case: To fixate the background so that the content scrolls on top of it
 background-attachment: fix;
 
@@ -858,6 +858,33 @@ background-clip: content-box;
 background-clip: text; // Useful, when we have text with big font and transparent color like - "font-size: 52px;font-weight: 700;color: transparent;"
 
 Note: If both background-origin and background-clip are defined, background-clip overrides the styling
+
+
+############### 
+Styling images
+
+When we add an image inside a container element then by default the height and width of image is used,
+and the height and width of container is not respected.
+
+To make image respect the size of the container element, ensure the container element's display property is set to 
+block or inline-block
+
+<span classs="image-container">
+  <img src='image.png'/>
+</span>
+
+.image-container {
+  display: inline-block
+  height: 50px;
+  width: 50px;
+}
+.image-container > img {
+  height: 100%
+}
+
+Note: all the stylings we do on background images like background-size, background-position etc
+They are not available for images in general.
+
 ############################################
 General notes around css used in MM-FRONTEND
 ############################################

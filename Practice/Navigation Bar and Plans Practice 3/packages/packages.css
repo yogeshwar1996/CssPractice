@@ -3,7 +3,7 @@ main {
 }
 
 .background {
-  background: url("../freedom.jpg");
+  background: url("../images/freedom.jpg");
   position: fixed;
   width: 100%;
   height: 100%;
@@ -11,7 +11,7 @@ main {
 }
 
 /* .packages {
-  background: url("../freedom.jpg");
+  background: url("../images/freedom.jpg");
   width: 100%;
   height: 100%;
 } */
