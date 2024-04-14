@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Font Sizes - em and rem</title>
+    <style>
+      body {
+        font-size: 16px;
+      }
+
+      .container {
+        font-size: 2em;
+      }
+
+      .box1 {
+        font-size: 2em;
+      }
+      .box2 {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    Body font size is 16 px
+    <h1>This is h1 tag inside body</h1>
+
+    <div class="container">
+      <p>
+        This text in &lt;p&gt; inside .container and has a font size of 2em
+        relative to its parent ie body
+      </p>
+
+      <div class="box1">
+        <p>
+          This text&lt;p&gt; inside .box1 has a font size of 2em relative to its
+          parent ie .container
+        </p>
+      </div>
+      <div class="box2">
+        <p>
+          This text&lt;p&gt; inside .box2 has a font size of 2rem relative to
+          its parent ie .container
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

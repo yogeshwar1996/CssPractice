@@ -687,8 +687,10 @@ Allowed values: static/fixed/relative/absolute/sticky
 
 > static - default value, follows the normal document flow, elements appear in the order they are present in DOM
 
-> fixed - element is removed from the normal document flow, and no space is created for the element in the page layout and gets attached to viewport.
-When we scroll on the page the element will always be visible.
+> fixed - element is removed from the normal document flow, 
+ and no space is created for the element in the page layout
+ and gets attached to viewport.
+ When we scroll on the page the element will always be visible.
 
 > absolute - the element is position absolutely to its ancestor, which has position other than static
 
@@ -704,6 +706,67 @@ Note: for this we additionally need to mention property `top`  and its value wil
 
 > Top/Bottom/Left/Right - We can move element in these directions only when position is something other that default value of static
 It can be fixed/relative/absolute/sticky
+
+Note: 3 Rules
+1. When position:fixed, the containing element is viewport
+2 When position:absolute, the containing element is an ancestor element which has position other than static. 
+  Here we consider both the content and padding of the containing element
+3. When position: either static or relative, the containing element is the content of the nearest block level ancestor
+
+
+Note: when we have following scenario
+
+<body>
+<div class="backdrop"></div>
+<p>
+This is interesting.
+</p>
+</body>
+
+.backdrop {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+The div now has body as nearest block level ancestor,
+The div takes the full width of the containing element but the height is 0 
+because the height of the body element is not a single value it is the height of its contents.
+
+Solution1: To fix this we can set height 100% to body as well as html elements
+.html {
+  height: 100%
+}
+.body {
+  height: 100%
+}
+.backdrop {
+  position: relative;
+  z-index:100;
+  width: 100%;
+  height: 100%;
+}
+Now it should work fine and backdrop element should have a height now.
+
+Solution2: We can set position absolute for the back-drop element
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index:100;
+  width: 100%
+  height: 100%
+}
+
+Solution3: We can set position to fixed
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index:100;
+  width: 100%
+  height: 100%
+}
 
 z-index
 ========
@@ -739,9 +802,11 @@ and we need to give a z-index: -1 so it shows in the back
 }
 
 Notes
-* z-index only works in context of the container element. i.e we can tell which element among the siblings will come on top or bottom
+* z-index only works in context of the container element.
+ i.e we can tell which element among the siblings will come on top or bottom
 * z-index only works with elements with position other than static
-* If two elements have same z-index then their order in DOM will determin which will show on top, element which comes later in DOM will appear on top
+* If two elements have same z-index then their order in DOM will determines
+  which will show on top, element which comes later in DOM will appear on top
 
 Example
 
@@ -1034,9 +1099,54 @@ filter: contrast(200%);
 One can also apply multiple filters like - filter: contrast(175%) brightness(3%);
 More on filters => https://developer.mozilla.org/en-US/docs/Web/CSS/filter
 
-################
-Working with SVG
+###################
+Knowing about units
 
+px - for absolute values
+rem, em - for font size
+% -for adusting wrt container element
+vh,vw - for adjusting wrt viewport
+
+##########
+em and rem
+
+Consider this example
+.body {
+  font-size: 16px;
+}
+<body>
+<h1> Hello </h1>
+</body>
+
+When you inspect the h1 tag in browser console it will show font size as 2em and when you go the computed styles
+It will be 32px ie 2 * 16px
+
+If we increase the font-size of body to 20px; then the computed font-size of h1 will become 2 * 20px ie 40px
+
+Font-size of the element defined as 2em means 2 times the actual-font size of the elment which is further inherited from its parent
+
+Note: Some browsers like chrome provide user the option to set font-size for the browser. 
+But if the font-size in the webpage has been defined using em the browser settings will not be effective.
+So developer has more control on the font-size.
+
+Note: when using em the font-size is calculated based on the font-size of the parent
+Consider this case
+<body style="font-size:16px">
+  Start
+  <div class="child-of-body" style="font-size:2em"> 
+    Hello
+    <div class="child-of-div-which-is-child-of-body" style="font-size:2em">
+    Hi
+    </div>
+  </div>
+</body>
+
+Here the body has font-size of 16px
+.child-of-body has font-size of 2em ie 32 px
+.child-of-div-which-is-child-of-body has a font-size of 2em which will be 2 * 32px ie 64px
+
+so if you dont want the font size of .child-of-div-which-is-child-of-body to be based on its parent
+you can define its font size as 2rem then it will be 2 * 16x ie 32px
 
 ############################################
 General notes around css used in MM-FRONTEND
