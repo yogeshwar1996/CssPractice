@@ -18,7 +18,9 @@
   </head>
 
   <body>
+    <!-- General Backdrop - which becomes visible when sidebar is opened or modal is opened -->
     <div class="back-drop"></div>
+    <!-- Modal -->
     <div class="modal">
       <h1 class="modal__title">Do you want to continue?</h1>
       <div class="modal__actions">
@@ -29,16 +31,20 @@
       </div>
     </div>
     <header class="main-header">
+      <!-- Content on left of page header's nav bar-->
       <div>
+        <!-- Button to toggle side bar -->
         <button class="toggle-button">
           <span class="toggle-button__bar"></span>
           <span class="toggle-button__bar"></span>
           <span class="toggle-button__bar"></span>
         </button>
+        <!-- Homepage icon -->
         <a href="index.html" class="main-header__brand">
           <img src="./images/uhost-icon.png" />
         </a>
       </div>
+      <!-- Content on right of page header's nav bar-->
       <nav class="main-nav">
         <ul class="main-nav__items">
           <li class="main-nav__item">
@@ -53,6 +59,7 @@
         </ul>
       </nav>
     </header>
+    <!-- mobile-nav refers to the side bar on left -->
     <nav class="mobile-nav">
       <ul class="mobile-nav__items">
         <li class="mobile-nav__item">

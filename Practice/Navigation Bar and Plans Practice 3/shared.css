@@ -135,11 +135,11 @@ body {
 .mobile-nav {
   display: none;
   position: fixed;
-  z-index: 101;
+  z-index: 101; /* A little more than that of the back-drop */
   top: 0;
   left: 0;
   background: white;
-  width: 80%;
+  width: 25%;
   height: 100vh;
 }
 
@@ -161,13 +161,12 @@ body {
 }
 
 .toggle-button {
-  width: 3rem;
+  width: 2rem;
   background: transparent;
   border: none;
   cursor: pointer;
   padding-top: 0;
   padding-bottom: 0;
-  vertical-align: middle;
 }
 
 .toggle-button:focus {
@@ -179,5 +178,9 @@ body {
   height: 0.2rem;
   background: black;
   display: block;
-  margin: 0.6rem 0;
+  margin: 0.2rem 0;
+}
+
+.open {
+  display: block !important;
 }
