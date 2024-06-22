@@ -1148,6 +1148,53 @@ Here the body has font-size of 16px
 so if you dont want the font size of .child-of-div-which-is-child-of-body to be based on its parent
 you can define its font size as 2rem then it will be 2 * 16x ie 32px
 
+##################################
+Viewport meta tag & Media Queries
+###################################
+ 
+The viewport meta tag is required to be able to adjust our site to the device viewport, 
+with this we can give the browser instructions on how to control the page's dimensions and scaling.
+Usage:
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+Key Attributes
+> width: Sets the width of the viewport. You can set it to a specific number of pixels or use the special value device-width,
+       which sets the width to the width of the device.
+> initial-scale: Sets the initial zoom level when the page is first loaded.
+> minimum-scale and maximum-scale: Set the minimum and maximum zoom level.
+> user-scalable: Controls whether the user can zoom in and out. It can be set to yes or no.
+
+
+Media queries on the other hand Media queries are a CSS feature that allows you to apply styles based on the characteristics of the device rendering the content,
+such as its width, height, orientation, and resolution
+
+Basic syntax 
+@media (query) {
+  /* CSS rules here */
+}
+
+Example
+/* Mobile devices (up to 600px) */
+@media (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+/* Tablets (601px to 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+/* Desktops (901px and above) */
+@media (min-width: 901px) {
+  body {
+    background-color: lightgoldenrodyellow;
+  }
+}
+
+
 ############################################
 General notes around css used in MM-FRONTEND
 ############################################
