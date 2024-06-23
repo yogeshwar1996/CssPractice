@@ -3,7 +3,7 @@
   background-image: linear-gradient(to bottom, transparent 80%, #f43400d9),
     url("./images/freedom.jpg");
   background-size: cover;
-  background-position: left 0% top 35%;
+  background-position: top;
   background-repeat: no-repeat;
   border: 4px dashed rgb(242 255 0);
   background-origin: border-box; /*Note: It does not work with background-attachment: fixed*/
