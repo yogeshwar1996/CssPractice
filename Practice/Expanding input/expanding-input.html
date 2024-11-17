@@ -1,0 +1,125 @@
+<!-- Create an interface for input field which expands horizontally over the other inline elements, when user is typing.
+The elements inline with it, on either side of the input should not move.
+When user clicks outside the input field, it should attain its original width.
+Ensure the elements are vertically aligned in center.
+Show tooltip when user hover's over the input element when its not in focus and text in the input is longer than the input elements original width (the width when its not expanded) -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        position: relative;
+        border: 4px solid salmon;
+      }
+      .container {
+        display: flex;
+        width: 500px;
+        height: 200px;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        border: 1px solid black;
+      }
+      .input-wrapper {
+        position: relative;
+        height: 36px;
+        width: 200px;
+      }
+      .input-field {
+        padding: 10px;
+        width: 100%;
+        transition: width 0.3s ease;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+      }
+      .input-field:focus {
+        width: 400px;
+        padding: 20px;
+        outline: none;
+        transform: translateX(-25%);
+        outline: 4px solid skyblue;
+      }
+      .side-element {
+        margin: 0 10px;
+        background-color: #f0f0f0;
+        padding: 10px;
+        width: 100px;
+        text-align: center;
+        border-radius: 5px;
+        position: relative;
+        z-index: 0;
+      }
+      .tooltip {
+        position: absolute;
+        background-color: #333;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        white-space: nowrap;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+      }
+      .input-field:not(:focus):hover + .tooltip.visible {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="side-element">Left</div>
+      <div class="input-wrapper">
+        <input type="text" class="input-field" placeholder="Type here..." />
+        <div class="tooltip"></div>
+      </div>
+      <div class="side-element">Right</div>
+    </div>
+
+    <script>
+      document.addEventListener("click", function (event) {
+        const inputField = document.querySelector(".input-field");
+        if (!inputField.contains(event.target)) inputField.blur();
+      });
+
+      const inputField = document.querySelector(".input-field");
+      const inputWrapper = document.querySelector(".input-wrapper");
+      const tooltip = document.querySelector(".tooltip");
+      const originalWidth = inputWrapper.offsetWidth;
+
+      inputField.addEventListener("input", function () {
+        tooltip.textContent = inputField.value;
+      });
+
+      inputField.addEventListener("focus", function () {
+        tooltip.classList.remove("visible");
+      });
+
+      inputField.addEventListener("mouseover", function () {
+        if (inputField.scrollWidth > originalWidth)
+          tooltip.classList.add("visible");
+        else tooltip.classList.remove("visible");
+      });
+    </script>
+  </body>
+</html>
