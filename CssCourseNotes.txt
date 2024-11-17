@@ -1195,6 +1195,660 @@ Example
 }
 
 
+####
+Font
+#####
+
+Ways to import and use fonts in a Webpage
+
+Method 1.  Using link tag
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+then in css
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+Method 2. Using @font-face Rule (for local or custom fonts):
+> Download the font files (usually in .woff, .woff2, .ttf, or .otf formats).
+> Place the font files in your project directory (e.g., in a fonts folder).
+> In your CSS, define the @font-face rule to load the font.
+
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('fonts/MyCustomFont.woff2') format('woff2'),
+       url('fonts/MyCustomFont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'MyCustomFont', sans-serif;
+}
+
+
+Method3. Importing from a CSS file:
+
+In the css file: 
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+Whitespace property
+###################
+The white-space property in CSS is used to control how whitespace (spaces, tabs, and line breaks) inside an element is handled
+
+It can have following values:
+
+> normal
+The white-space property in CSS is used to control how whitespace (spaces, tabs, and line breaks) inside an element is handled
+Text wraps to the next line when needed (depending on the width of the containing element).
+
+> nowrap
+Collapses whitespace as in normal, but prevents text from wrapping to the next line, hence causing it overflow out of container
+Text will only break if you insert manual line breaks (<br>)
+
+> pre
+Preserves all whitespace characters, including spaces, tabs, and line breaks.
+Text does not wrap, even if it overflows the container.
+
+> pre-wrap
+Preserves all whitespace characters, including spaces, tabs, and line breaks.
+Text does not wrap, even if it overflows the container.
+
+Text decoration
+################
+text-decoration: underline dotted red;
+text-decoration: line-through wavy red;
+
+Background
+###########
+ background: linear-gradient(to top, yellow 1%, transparent),
+    url("images/freedom.jpg") center/cover no-repeat border-box
+
+> liner-gradient(direction, colors) creates an image consisting of a progressive transition between two or more colors
+
+For defining direction
+1. Using `to` argument
+to left - A gradient going from the right to the left corner
+Similarly we have to right, to bottom, to top, to left top, to left bottom, to right top, to right bottom
+
+2. Using `deg`
+0deg, 45deg, 90deg etc
+A value of 0deg is equivalent to to top; increasing values rotate clockwise from there.
+
+For defining colors
+we can use color names red, green etc
+We can define color hex codes
+
+Note: the first color is the starting color, following colors are shown successively in the gradient
+Note: along with colors you can mention the percentage of space that color occupies, for example liner-gradient(<direction>, red 70%, white 30%)
+Note: we can also describe value `transparent` instead of color
+
+> url: here we define the path of the image
+
+We can define image applied on top of a liner gradient images as follows
+background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
+                  url("../../media/examples/lizard.png");
+
+We can define an image on top of another image also
+background-image: url("../../media/examples/lizard.png"),
+                  url("../../media/examples/star.png");
+To read more 
+https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient
+https://developer.mozilla.org/en-US/docs/Web/CSS/background-image
+
+> background-position: center 
+It centers the background image
+
+> background-size: cover
+It tells the image to scale proportionally to cover the entire container while maintaining its aspect ratio i.e (width-to-height ratio).
+
+> background-repeat: no-repeat
+This property sets how background images are repeated. A background image can be repeated along the horizontal and vertical axes, or not repeated at all.
+
+> background-clip: border-box;
+The background-clip CSS property sets whether an element's background extends underneath its border box, padding box, or content box.
+
+Vertical Alignment
+##################
+
+For inline elements or table cells
+-----------------------------------
+{vertical-align: center}
+
+
+For Flexbox items
+-------------------------------
+For Container/Flexbox -> {display: flex}
+For flex-items -> {align-items: center}
+
+
+For Grid items
+--------
+On the container/grid -> {display: grid, align-items: center}
+
+
+Using position, top and transform
+----------------------------------
+<div class="container">
+  <div class="item">Centered Item</div>
+</div>
+
+.container {
+  position: relative; /* Ensure the container is the positioning context for its child, required for using absolute on children  */
+  height: 200px; /* Example height for demonstration */
+  border: 1px solid black;
+}
+
+.item {
+  position: absolute; /* Position the item relative to the container */
+  top: 50%; /* Move the top edge to 50% of the container's height */
+  transform: translateY(-50%); /* Offset by 50% of the item's height */
+}
+
+Using line-height
+-----------------
+Use line-height on the child element to vertically align text in a container of fixed height for example buttons, headers etc
+If the line-height is equal to the height of the container, the text will appear vertically centered.
+
+.container {
+    height: 50px;
+    line-height: 50px;
+    padding: 0; /*Ensure there is no padding affecting the vertical alignment*/
+}
+
+Horizontal Centering
+#####################
+
+Block level element
+-------------------
+{
+  display: block;
+  margin: auto;
+}
+
+
+For inline elements or text
+---------------------------
+text-align: center
+
+
+For Flexbox items
+------------------
+For Container/Flexbox -> {display: flex}
+For flex-items -> {justify-contents: center}
+
+
+For Grid
+--------
+On the container/grid -> {display: grid, justify-items: center}
+
+
+Using position, left and transform
+----------------------------------
+<div class="container">
+  <div class="item">Centered Item</div>
+</div>
+
+.container {
+  position: relative; /* Ensure the container is the positioning context for its child, required for using absolute on children  */
+  height: 400px; /* Example height for demonstration */
+  border: 1px solid black;
+}
+
+.item {
+  position: absolute; /* Position the item relative to the container */
+  left: 50%; /* Move the top edge to 50% of the container's height */
+  transform: translateX(-50%); /* Offset by 50% of the item's height */
+}
+
+
+Flexbox
+#######
+
+Basic usage
+-----------
+<div class="menu">
+  <p>Option 1</p>
+  <p>Option 2</p>
+  <p>Option 3</p>
+</div>
+
+
+.menu {
+  display: flex;
+}
+
+<div> is flex-container
+<p>'s are flex-item
+
+
+Properties
+-----------
+flex-container properties
+* flex-flow
+* justify-content
+* align-content
+* align-items
+* flex-wrap
+
+flex-item properties
+* order
+* flex
+* align-self
+
+
+Notes
+-----
+.container {
+  display: flex; 
+} 
+
+Implies
+* contents show up in a single row.
+* The height of the container becomes equal to flex-item with maximum height
+* All the other flex-items also occupy the same height unless they have a height already defined for them which is lesser
+* When the window width is reduced the flex-items get sequeezed
+* When we apply display: flex then the following properties are also applied with default values automatically
+  flex-direction: row; // It can be row or column
+  flex-wrap: nowrap; // other possible values are wrap, wrap-reverse etc
+* We can define the flex-direction and flex-wrap in short hand as follows: 
+  flex-flow: row wrap; 
+
+nowrap
+-> When we use nowrap and we keep decreasing the window width the flex-items sequeeze to an extent and then just we start to see horizontal scrollbar
+
+wrap 
+-> we keep decreasing the window width the flex-items sequeeze to an extent and then if its too tight the last 
+flex-item goes to the next rowand the height of that flex-item will also be whats its original height
+
+wrap-reverse
+-> It wraps the flex-item to line above  
+
+
+Grid
+#####
+
+Basic usage
+------------
+<div class="container">
+    <div class="el1">Element 1</div>
+    <div class="el2">Element 2</div>
+    <div class="el3">Element 3</div>
+    <div class="el4">Element 4</div>
+</div>
+
+.container{ 
+  display: grid;
+  width: 600px;
+  height: 400px;
+  grid-template-columns: 100px 200px 300px;
+  grid-template-rows: 20px;
+}
+
+
+#### Container/Grid Properties ####
+
+> 1. Defining grid
+-------------------
+display: grid; 
+
+
+> 2. Defining row/columns and sizes
+-------------------------------------
+grid-template-columns: 100px 200px 300px; // It means 3 columns respective sizes
+grid-template-rows: 100px auto;
+
+* allowed value/units: auto, px, rem, em, % as well as fr (fraction) and mix of them
+* fractions: `100px 1fr 2fr` would mean 3 columns, 
+  where the second column and third column will occupy the remaining space left 
+  after first column occupies 100px and split the remaining space in respective ration 1:2
+  hence 3rd column will occupy twice the space than 2nd column
+* "auto" means fill the available space
+* repeat() - for defining 4 columns each of same size 
+             grid-template-columns: repeat(4, 25%) or grid-template-columns: repeat(4, 100px)
+* minmax() - for defining row/column height in certain range 
+             grid-template-rows: 50px minmax(50px, 100px)
+             means 1st row will be 50px and 2nd row will be minimum 50px and maximum 100px
+* fit-content() - when you want to occupy as much space required by the content
+  Example grid-template-rows: 120px auto fit-content(40px)
+  would mean the last row should occupy min 40px and above that as much as content requires.
+
+* line naming - while defining columns and rows we can define line names as follows
+  grid-template-rows: [row-1-start] 100px [row-2-start] auto;
+  
+  For defining multiple names for same line
+  grid-template-rows: [row-1-start] 100px [row-1-end row-2-start] auto; 
+
+  For repeating values
+  grid-template-columns: repeat(4, [col-start] 25% [col-end])
+  
+
+> 3. Grid Gap
+---------------
+grid-row-gap: 10px;
+grid-column-gap: 20;
+
+Short hand notation
+grid-gap: 10px 20px;
+
+> 4. Grid template areas
+-------------------------
+For a grid with 3 cols and 3 rows as below
+.container{ 
+  display: grid;
+  width: 600px;
+  height: 400px;
+  grid-template-columns: 100px 200px 300px;
+  grid-template-rows: repeat(3, 20px);
+}
+
+We can define area templates as follows:
+
+.container{ 
+  display: grid;
+  width: 600px;
+  height: 400px;
+  grid-template-columns: 100px 200px 300px;
+  grid-template-rows: repeat(3, 20px);
+  grid-template-areas: "header header header"
+                       "l-side main r-side"
+                       "footer footer footer"
+}
+
+NOTE when defining area if you dont want to name a area then add a dot(.) in its place, for example
+
+grid-template-areas: "header header header"
+                     "l-side main ."
+                     "footer footer footer"
+ 
+#### Grid item properties ####
+
+> grid-column-start 
+> grid-column-end 
+> grid-row-start
+> grid-row-end 
+
+.el3 {
+  grid-column-start: 3 // start column from line 3
+  grid-column-end: 5 // end column on line 5
+  grid-row-start: 1 // start row from line 1
+  grid-row-start: 3 // end row on line 3
+}
+
+1     2      3     4     5
+--------------------------
+| el1 |  el2  |          |
+|     |       |  el3     |
+---------------          |
+| el4 |       |          |
+--------------------------
+
+* span n cells
+We can define how many columns the grid item should span 
+grid-column-start:3;
+grid-column-end: span 2
+
+
+* occupying entire row 
+grid-column-start:1;
+grid-column-end: -1;  // Negative line numbers start from end
+or
+grid-column-end: 5;
+
+
+* Using line names
+.el1 {
+  grid-row-start: row-1-start;
+  grid-row-end: row-1-end;
+}
+
+
+* Using short hand notation
+.el3 {
+  grid-column-start: 3 // start column from line 3
+  grid-column-end: 5 // end column on line 5
+  grid-row-start: 1 // start row from line 1
+  grid-row-start: 3 // end row on line 3
+}
+
+>>> grid-row and grid-column <<<
+---------------------------------
+Using line numbers
+.el3 {
+  grid-column: 3 / 5;
+  grid-row: 1 / 3;
+}
+
+Using line names
+.el3 {
+  grid-row: row-1-start / row-1-end
+  
+  grid-column: col-1-start / col-1-end
+  // When col is created using repeat and line is named
+  // grid-col: col-start 1 / col-end 1
+}
+
+>>> grid-area <<<
+-----------------
+.el {
+  //With line names
+  grid-area: row-1-start / col-1-start / row-1-end / col-1-end
+
+  // With line numbers
+  grid-area: 1 / 1 / 2 / 2
+
+  //with area names defined in grid-template-areas in container element
+  grid-area: header
+}
+
+##### Aligning Grid items #####
+---------------------------------
+Properties applied to Grid
+
+> 1. justify-items - To align items in grid horizontally (Its similar to justify-contents in flexbox)
+
+.container{
+  display: grid;
+  justify-items: start | center | end | stretch;
+}
+
+start
+--------------------------
+***     |***    |***     |
+--------------------------
+
+end
+--------------------------
+     ***|     ***|    ***|
+--------------------------
+
+center
+--------------------------
+   ***  |  ***   |  ***  |
+--------------------------
+
+stretch
+--------------------------
+*   *   *|*   *   *|* * *|
+--------------------------
+
+
+
+> 2. align-items - To align items in grid vertically (Its similar to align-items in flexbox)
+
+.container{
+  display: grid;
+  align-items: start | center | end | stretch | baseline;
+}
+
+start
+--------------------------
+********|*******|********|
+        |       |        | 
+        |       |        |
+--------------------------
+
+end
+--------------------------
+        |        |       |
+        |        |       |
+********|********|*******|
+--------------------------
+
+center
+--------------------------
+        |        |       |
+********|********|*******|
+        |        |       |
+--------------------------
+
+
+>3. To ensure the grid items fill the entire cells
+.container {
+  display: grid;
+  align-items: stretch;
+  justify-items: stretch;
+}
+
+
+> 4. justify-self - To align the individual cell horizontally
+Example 
+.el3 {
+  grid-area: main;
+  justify-self: center
+}
+
+---------------------------
+*********HEADER***********|
+---------------------------
+  * |        MAIN         |
+  S |         *           |
+  I |         *           | 
+  D |         *           |
+  E |         *           |
+  * |         *           |
+---------------------------
+********FOOTER************|
+---------------------------
+
+> 5. align-self - To align the individual cell vertically
+Example 
+.el3 {
+  grid-area: main;
+  align-self: center
+}
+
+---------------------------
+*********HEADER***********|
+---------------------------
+  * | *                   |
+  S | *                   | 
+  I | MAIN                |
+  D | *                   |
+  E | *                   |
+  * | *                   |
+---------------------------
+********FOOTER************|
+---------------------------
+
+##### Aligning Grid itself #####
+---------------------------------
+justify-content - to horizontally move the entire grid in its contianer
+align-content - to vertically move the entire grid in its container
+
+
+
+##### Grid Auto rows and columns ######
+---------------------------------------
+.container {
+  display: grid;
+}
+
+* When a container's display property is set to grid, then by default, its direct children are dynamically moved into different rows.
+* Size of each row is auto, ie as much as required by the content
+* We can control this via "grid-auto-rows" property 
+  .container {
+    display: grid;
+    grid-auto-rows: minmax(40px, auto);  // min. height of dynamically created rows should be 40px, else as much as its contents
+  }
+* We can also control the behaviour that should the child elements of grid containers auto flow into rows or columns
+  .container {
+    display: grid;
+    grid-auto-flow: column; // by default its rows
+  }
+  then to style dynamically created columns you can define "grid-auto-columns"
+  .container {
+    display: grid;
+    grid-auto-flow: column; // by default its rows
+    grid-auto-columns: 70px;
+  }
+
+
+#### Grid auto-fill and  auto-fit ####
+--------------------------------------
+
+"auto-fill"
+
+When you want that if the window size is reducing to a level that grid columns can no longer squeeze 
+and the columns should start moving into the new row. 
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 80px);
+}
+
+"auto-fit"
+
+Along with the ability to move to next line when cells are more than no of columns defined.
+If you also want, when only 3 out of 5 columns have content and they should appear in center.
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 80px);
+}
+
+
+
+CSS Transforms
+##############
+
+The transform property allows you to skew, rotating, translate(move element along an axis) or scale (zoom in/out)
+
+.element {
+transform: scale(2) // 2 times bigger
+transform: scale(2, 0.5) // 2 times wide, half the original height
+transform: skew(25deg, 25deg) //  Tilts an element to the left or right, like turning a rectangle into a parallelogram.
+transform: rotateZ(45deg) // rotates the element clockwise around its center
+transform: rotateX(45deg) // rotates the element around X axis
+transform: rotateY(45deg) // rotates the element around Y axis
+transform: translate(-50px, -50px)// Move back 50px on X-axis, Y-axis
+}
+
+Example 
+
+<div class="element">
+    Hello
+</div>
+
+ .element{
+    position: absolute;
+    background-color: grey;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateZ(30deg);
+}
+
+
 ############################################
 General notes around css used in MM-FRONTEND
 ############################################
