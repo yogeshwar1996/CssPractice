@@ -21,18 +21,18 @@ Show tooltip when user hover's over the input element when its not in focus and 
         border: 4px solid salmon;
       }
       .container {
+        position: relative;
         display: flex;
-        width: 500px;
-        height: 200px;
         justify-content: center;
         align-items: center;
-        position: relative;
+        width: 500px;
+        height: 200px;
         border: 1px solid black;
       }
       .input-wrapper {
         position: relative;
-        height: 36px;
         width: 200px;
+        height: 36px;
       }
       .input-field {
         padding: 10px;
@@ -42,8 +42,6 @@ Show tooltip when user hover's over the input element when its not in focus and 
         z-index: 1;
         top: 0;
         bottom: 0;
-        margin: auto;
-        overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         box-sizing: border-box;
