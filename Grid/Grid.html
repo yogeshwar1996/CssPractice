@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+   <style>
+    .container {
+    margin: 20px;
+    display: grid;
+    height: 400px;
+    width: 1000px;
+    grid-template-columns: repeat(4,25%);
+    grid-template-rows: 25% 75% 25%;
+    grid-template-areas: "header header header header"
+                         "side main main main"
+                         "footer footer footer footer";
+    }
+
+    .el1 {
+        background: grey;
+        /* grid-column-start: 1; */
+        /* grid-column-end: span 4; */
+        grid-area: header;
+        
+    }
+
+    .el2 {
+        background:green;
+        /* grid-column-start: 1; */
+        /* grid-column-end: span 1; */
+        grid-area: side;
+    }
+
+    .el3 {
+        background: orange;
+        /* grid-column-start: 2; */
+        /* grid-column-end: span 3; */
+        grid-area: main;
+    }
+
+    .el4 {
+        background: brown;
+        /* grid-column-start: 1; */
+        /* grid-column-end: span 4; */
+        grid-area: footer;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="el1">Element 1</div>
+        <div class="el2">Element 2</div>
+        <div class="el3">Element 3</div>
+        <div class="el4">Element 4</div>
+    </div>
+</body>
+</html>
