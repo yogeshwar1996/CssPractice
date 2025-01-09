@@ -1211,7 +1211,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-Method 2. Using @font-face Rule (for local or custom fonts):
+Method 2. Using @font-face Rule (for local or custom fonts):tratransitionnsition
 > Download the font files (usually in .woff, .woff2, .ttf, or .otf formats).
 > Place the font files in your project directory (e.g., in a fonts folder).
 > In your CSS, define the @font-face rule to load the font.
@@ -1847,6 +1847,69 @@ Example
     left: 50%;
     transform: translate(-50%, -50%) rotateZ(30deg);
 }
+
+
+#############
+Transitions
+#############
+Shorthand notation
+transition: [WHAT] [DURATION] [DELAY] [TIMING-FUNCTION];
+
+Individual properties
+1. transition-property: [WHAT]
+Here we define the CSS properties to which a transition effect should be applied when the values for them change.
+Example 
+ transition-property: margin-right; //Single property
+ transition-property: margin-right, opacity, color; //Multiple properties
+ transition-property: all;
+ transition-property: none;
+
+ 2. transition-duration: [DURATION]
+The transition-duration CSS property sets the length of time a transition animation should take to complete
+Example
+ transition-duration: 500ms;
+ transition-duration: 2s;
+ transition-duration: 3s, 1s; //In case of multiple durations, each duration will be applied to the corresponding property as specified by the transition-property property,
+
+3.transition-delay: [DELAY]
+ specifies the duration to wait before starting a property's transition effect when its value changes.
+Example:
+transition-delay: 4s;
+transition-delay: 500ms;
+
+4. transition-timing-function: [TIMING FUNCTION]
+Example
+transition-timing-function: ease-in | ease out | ease | ease-in-out;
+transition-timing-function: linear
+transition-timing-function: step-start | step-end
+transition-timing-function: steps(4, end);
+
+NOTE transition does not work on transition-property set to "display"
+But we can set  transition-property to "opacity" and along with "display" as follows - 
+.element {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.element.show {
+  display: block;
+  opacity: 1;
+}
+
+>> When we want to show the element
+//First set display property
+el.style.display = 'block';
+
+//Then after a timeout add the class which changes opacity
+setTimeout(() => {
+  el.classList.add('show');
+}, 0);
+
+>> When we want to hide the element
+//First set display property
+el.classList.remove('show');
+el.style.display = 'none';
 
 
 ############################################

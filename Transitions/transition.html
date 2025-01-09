@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      .box {
+        width: 150px;
+        height: 150px;
+        background-color: #3498db;
+        transition: background-color 1s ease, transform 2s steps(4, end);
+      }
+
+      .box:hover {
+        background-color: #2ecc71;
+        transform: scale(4);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>
